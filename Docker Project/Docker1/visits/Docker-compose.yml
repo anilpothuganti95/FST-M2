@@ -1,0 +1,13 @@
+version: "3"
+services:
+  redis-server:
+    image: "redis"
+    volumes:
+      - ./redis:/data
+    command: ["redis-server", "--save", "1 1"]
+  node-app:
+    image: 'pothugantianil95/visits'
+    restart: always
+    build: .
+    ports:
+      - "8081:8081"
